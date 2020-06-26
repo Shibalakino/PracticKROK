@@ -1,33 +1,38 @@
-#include <QCoreApplication>
 #include <iostream>
-#include <string>
-int main(int argc, char *argv[])
+using namespace std;
+
+int main()
 {
-    QCoreApplication a(argc, argv);
-        setlocale(0, "UA");
-        int k=0;
-        double ch=0.0;
-        std :: string str;
-        std :: cout<<"Enter a text: ";
-        std::getline(std::cin,str);
-
-        char *mass=new char[str.length()];
-        int *arr=new int [str.length()];
-        for (int i=0;i<str.length();i++)
-        arr[i]=0;
-        while (k<str.length())
+    int i, j, n;
+    char text[1024] = { 0 };
+    char find[1024] = { 0 };
+    char* sub = NULL;
+    cout << "Enter text less than 1024 chars\n";
+    cin.getline(text, 1023);
+    int len = strlen(text);
+    for (j = i = 0; text[i] != '\0'; i++)
+    {
+        if (!strchr(find, text[i]))
         {
-        for (int i=0; i<str.length();i++)
-        if (str[k]==str[i])
-        arr[k]++;
-        mass[k]=str[k];
-        k++;
+            find[j] = text[i];
+            j = j + 1;
         }
-
-        for (int i=0; i<str.length();i++){
-        if (arr[i]>1)
-        ch+=arr[i];
-        std :: cout<<mass[i]<<" - "<<arr[i]<<std :: endl;}
-        std :: cout<<"Answer: "<<(ch/2)/str.length();
-    return a.exec();
+    }
+    cout << "Frequency of chars in text\n";
+    for (n = j = 0; find[j] != '\0'; j++)
+    {
+        if (sub = strchr(text, find[j]))
+        {
+            cout << "char : " << find[j] << " ";
+            for (n = 1; sub != NULL; n++)
+            {
+                if (sub + 1)
+                    sub = strchr(sub + 1, find[j]);
+            }
+            cout << "count : " << n << " "
+                << "freq  : " << (1.0 * n) / len << endl;
+        }
+    }
+    system("pause");
+    return 0;
 }
